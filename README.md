@@ -18,7 +18,7 @@ import (
 )
 
 func main() {
-	now := time.Now()
+    now := time.Now()
     # check whether a day is holiday
     if russia.IsHoliday(now) {
         h, _ := russia.GetHoliday(now)
