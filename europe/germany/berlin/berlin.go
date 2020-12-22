@@ -13,8 +13,11 @@ var (
 	}
 	calendar = core.NewCalendar(
 		holidays,
+		core.WithNewYearDay(),
+		core.WithLabourDay(),
 		core.WithHolidayFunc(additionalHolidays),
 		core.WithChristmas(),
+		core.WithBoxingDay(),
 	)
 )
 
@@ -44,13 +47,6 @@ func GetHoliday(date time.Time) (*core.CalEvent, error) {
 	if !IsHoliday(date) {
 		return nil, fmt.Errorf("There is no holiday for %s", date)
 	}
-	// if isShiftHoliday(date) {
-	// 	holiday := getOriginalHoliday(date)
-	// 	if holiday == nil {
-	// 		return nil, fmt.Errorf("There is no holiday for %s", date)
-	// 	}
-	// 	return holiday, nil
-	// }
 	holiday := calendar.GetHoliday(date)
 	if holiday == nil {
 		return nil, fmt.Errorf("There is no holiday for %s", date)

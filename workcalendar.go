@@ -5,11 +5,6 @@ import (
 	"time"
 )
 
-const (
-	christmasDay        string = "12/25"
-	ortodoxChristmasDay string = "1/7"
-)
-
 //CalEvent describes holiday
 type CalEvent struct {
 	Name string
@@ -27,26 +22,6 @@ func Event(name string) *CalEvent {
 //CalendarOption is inteded to be passed to NewCalendar
 type CalendarOption func(*Calendar)
 
-//WithHolidayFunc is inteded to add HolidayFunc
-func WithHolidayFunc(additionalHolidaysFunc func(date time.Time) Holidays) CalendarOption {
-	return func(c *Calendar) {
-		c.additionalHolidays = additionalHolidaysFunc
-	}
-}
-
-//WithOrtodoxChristmas is option implementing ortodox christmas
-func WithOrtodoxChristmas() CalendarOption {
-	return func(c *Calendar) {
-		c.Days[ortodoxChristmasDay] = Event("Christmas Day")
-	}
-}
-
-//WithChristmas is option implementing christmas
-func WithChristmas() CalendarOption {
-	return func(c *Calendar) {
-		c.Days[christmasDay] = Event("Christmas Day")
-	}
-}
 
 //NewCalendar prepares calendar struct
 func NewCalendar(holidays Holidays, opts ...CalendarOption) *Calendar {
