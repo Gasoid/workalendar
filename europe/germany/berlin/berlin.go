@@ -11,7 +11,11 @@ var (
 	holidays = core.Holidays{
 		"10/3": core.Event("Day of German Unity"),
 	}
-	calendar = core.Calendar(holidays, additionalHolidays)
+	calendar = core.NewCalendar(
+		holidays,
+		core.WithHolidayFunc(additionalHolidays),
+		core.WithChristmas(),
+	)
 )
 
 func additionalHolidays(date time.Time) core.Holidays {
