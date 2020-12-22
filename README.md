@@ -19,7 +19,7 @@ import (
 
 func main() {
     now := time.Now()
-    # check whether a day is holiday
+    // check whether a day is holiday
     if russia.IsHoliday(now) {
         h, _ := russia.GetHoliday(now)
         fmt.Printf("Holiday is %s", h)
@@ -27,7 +27,7 @@ func main() {
         fmt.Print("No holiday today")
     }
 
-    # get holiday name
+    // get holiday name
     march8 := time.Date(2020, time.March, 8, 0, 0, 0, 0, time.UTC)
     h, err := russia.GetHoliday(march8)
     if err != nil {
