@@ -17,8 +17,8 @@ func WithHolidayFunc(additionalHolidaysFunc func(date time.Time) Holidays) Calen
 	}
 }
 
-//WithOrtodoxChristmas is option implementing ortodox christmas
-func WithOrtodoxChristmas() CalendarOption {
+//WithOrthodoxChristmas is option implementing orthodox christmas
+func WithOrthodoxChristmas() CalendarOption {
 	return func(c *Calendar) {
 		c.Days[ortodoxChristmasDay] = Event("Christmas Day")
 	}
@@ -49,5 +49,12 @@ func WithNewYearDay() CalendarOption {
 func WithLabourDay() CalendarOption {
 	return func(c *Calendar) {
 		c.Days[labourDay] = Event("Labour Day")
+	}
+}
+
+//WithWhitMonday is option implementing whit monday
+func WithWhitMonday() CalendarOption {
+	return func(c *Calendar) {
+		c.Days[labourDay] = Event("Whit Monday")
 	}
 }
