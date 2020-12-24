@@ -1,6 +1,12 @@
 # Workcalendar
 * WORK in PROGRESS
 
+### DONE:
+
+- Austria
+- Germany
+- Russia
+
 ## Overview
 
 Workcalendar is a go library that is supposed to handle holidays.
