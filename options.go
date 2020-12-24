@@ -3,11 +3,15 @@ package workalendar
 import "time"
 
 const (
-	newYearDay          string = "1/1"
-	labourDay           string = "5/1"
-	christmasDay        string = "12/25"
-	boxingDay           string = "12/26"
-	ortodoxChristmasDay string = "1/7"
+	newYearDay           string = "1/1"
+	labourDay            string = "5/1"
+	christmasDay         string = "12/25"
+	boxingDay            string = "12/26"
+	ortodoxChristmasDay  string = "1/7"
+	epiphanyDay          string = "1/6"
+	assumptionDay        string = "8/15"
+	allSaints            string = "11/1"
+	immaculateConception string = "12/8"
 )
 
 //WithHolidayFunc is inteded to add HolidayFunc
@@ -92,5 +96,40 @@ func WithGoodFriday() CalendarOption {
 func WithAscension() CalendarOption {
 	return func(c *Calendar) {
 		c.includeAscension = true
+	}
+}
+
+//WithEpiphany is option implementing good friday
+func WithEpiphany() CalendarOption {
+	return func(c *Calendar) {
+		c.Days[epiphanyDay] = Event("Epiphany")
+	}
+}
+
+//WithCorpusChristi is option implementing Corpus Christi
+func WithCorpusChristi() CalendarOption {
+	return func(c *Calendar) {
+		c.includeCorpusChristi = true
+	}
+}
+
+//WithAssumption is option implementing Assumption
+func WithAssumption() CalendarOption {
+	return func(c *Calendar) {
+		c.Days[assumptionDay] = Event("Assumption of Mary to Heaven")
+	}
+}
+
+//WithAllSaints is option implementing All Saints
+func WithAllSaints() CalendarOption {
+	return func(c *Calendar) {
+		c.Days[allSaints] = Event("All Saints Day")
+	}
+}
+
+//WithImmaculateConception is option implementing Immaculate Conception
+func WithImmaculateConception() CalendarOption {
+	return func(c *Calendar) {
+		c.Days[immaculateConception] = Event("Immaculate Conception")
 	}
 }

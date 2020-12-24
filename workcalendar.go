@@ -44,6 +44,7 @@ type Calendar struct {
 	includeEasterMonday,
 	includeGoodFriday,
 	includeAscension,
+	includeCorpusChristi,
 	includeWhitMonday,
 	includeWhitSunday bool
 }
@@ -73,6 +74,7 @@ func (c *Calendar) checkEasterHolidays(date time.Time) (bool, *CalEvent) {
 	easterMonday := easterSunday.AddDate(0, 0, 1)
 	goodFriday := easterSunday.AddDate(0, 0, -2)
 	ascensionThursday := easterSunday.AddDate(0, 0, 39)
+	corpusChristi := easterSunday.AddDate(0, 0, 60)
 	if c.includeEasterSunday {
 		if easterSunday.Month() == date.Month() && easterSunday.Day() == date.Day() {
 			return true, Event("Easter Sunday")
@@ -98,6 +100,11 @@ func (c *Calendar) checkEasterHolidays(date time.Time) (bool, *CalEvent) {
 			return true, Event("Ascension Thursday")
 		}
 	}
+	if c.includeCorpusChristi {
+		if corpusChristi.Month() == date.Month() && corpusChristi.Day() == date.Day() {
+			return true, Event("Corpus Christi")
+		}
+	}
 	return false, nil
 }
 
@@ -117,6 +124,10 @@ func (c *Calendar) checkWhitHolidays(date time.Time) (bool, *CalEvent) {
 	}
 	return false, nil
 }
+
+// func (c *Calendar) checkChristianHolidays(date time.Time) (bool, *CalEvent) {
+// 	return false, nil
+// }
 
 //IsWorkingDay is inteded to check whether a day is working or not
 func (c *Calendar) IsWorkingDay(date time.Time) bool {
