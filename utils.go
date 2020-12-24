@@ -4,15 +4,15 @@ import (
 	"time"
 )
 
-type easterMethod int8
+type easterType int8
 
 const (
-	EasterJulian   easterMethod = 1
-	EasterOrthodox easterMethod = 2
-	EasterWestern  easterMethod = 3
+	EasterJulian   easterType = 1
+	EasterOrthodox easterType = 2
+	EasterWestern  easterType = 3
 )
 
-func easter(year int, method easterMethod) time.Time {
+func easter(year int, method easterType) time.Time {
 	var (
 		i, j, e, c, h, p, d, m, y, g int
 	)

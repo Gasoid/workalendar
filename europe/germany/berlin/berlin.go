@@ -18,6 +18,10 @@ var (
 		core.WithHolidayFunc(additionalHolidays),
 		core.WithChristmas(),
 		core.WithBoxingDay(),
+		core.WithEasterMonday(),
+		core.WithWhitMonday(),
+		core.WithAscension(),
+		core.WithGoodFriday(),
 	)
 )
 

@@ -52,9 +52,45 @@ func WithLabourDay() CalendarOption {
 	}
 }
 
+//WithEasterSunday is option implementing easter sunday
+func WithEasterSunday() CalendarOption {
+	return func(c *Calendar) {
+		c.easterMethod = EasterWestern
+		c.includeEasterSunday = true
+	}
+}
+
+//WithEasterMonday is option implementing easter monday
+func WithEasterMonday() CalendarOption {
+	return func(c *Calendar) {
+		c.includeEasterMonday = true
+	}
+}
+
 //WithWhitMonday is option implementing whit monday
 func WithWhitMonday() CalendarOption {
 	return func(c *Calendar) {
-		c.Days[labourDay] = Event("Whit Monday")
+		c.includeWhitMonday = true
+	}
+}
+
+//WithWhitSunday is option implementing whit sunday
+func WithWhitSunday() CalendarOption {
+	return func(c *Calendar) {
+		c.includeWhitSunday = true
+	}
+}
+
+//WithGoodFriday is option implementing good friday
+func WithGoodFriday() CalendarOption {
+	return func(c *Calendar) {
+		c.includeGoodFriday = true
+	}
+}
+
+//WithAscension is option implementing good friday
+func WithAscension() CalendarOption {
+	return func(c *Calendar) {
+		c.includeAscension = true
 	}
 }
