@@ -24,7 +24,7 @@ func WithHolidayFunc(additionalHolidaysFunc func(date time.Time) Holidays) Calen
 //WithOrthodoxChristmas is option implementing orthodox christmas
 func WithOrthodoxChristmas() CalendarOption {
 	return func(c *Calendar) {
-		c.Days[ortodoxChristmasDay] = Event("Christmas Day")
+		c.Days[ortodoxChristmasDay] = Event("Christmas")
 	}
 }
 
@@ -131,5 +131,12 @@ func WithAllSaints() CalendarOption {
 func WithImmaculateConception() CalendarOption {
 	return func(c *Calendar) {
 		c.Days[immaculateConception] = Event("Immaculate Conception")
+	}
+}
+
+//WithRadonitsa is option implementing Radonitsa
+func WithRadonitsa() CalendarOption {
+	return func(c *Calendar) {
+		c.includeRadonitsa = true
 	}
 }

@@ -4,6 +4,7 @@
 ### DONE:
 
 - Austria
+- Belarus
 - Germany
 - Russia
 
