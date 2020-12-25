@@ -64,6 +64,14 @@ func WithLabourDay() CalendarOption {
 	}
 }
 
+//WithEasterSaturday is option implementing easter Saturday
+func WithEasterSaturday() CalendarOption {
+	return func(c *Calendar) {
+		c.easterMethod = EasterWestern
+		c.includeEasterSaturday = true
+	}
+}
+
 //WithEasterSunday is option implementing easter sunday
 func WithEasterSunday() CalendarOption {
 	return func(c *Calendar) {
@@ -76,6 +84,13 @@ func WithEasterSunday() CalendarOption {
 func WithEasterMonday() CalendarOption {
 	return func(c *Calendar) {
 		c.includeEasterMonday = true
+	}
+}
+
+//WithEasterTuesday is option implementing easter tuesday
+func WithEasterTuesday() CalendarOption {
+	return func(c *Calendar) {
+		c.includeEasterTuesday = true
 	}
 }
 
@@ -146,5 +161,12 @@ func WithImmaculateConception() CalendarOption {
 func WithRadonitsa() CalendarOption {
 	return func(c *Calendar) {
 		c.includeRadonitsa = true
+	}
+}
+
+//WithCleanMonday is option implementing clean monday
+func WithCleanMonday() CalendarOption {
+	return func(c *Calendar) {
+		c.includeCleanMonday = true
 	}
 }
