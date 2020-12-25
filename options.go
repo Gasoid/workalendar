@@ -6,6 +6,7 @@ const (
 	newYearDay           string = "1/1"
 	labourDay            string = "5/1"
 	christmasDay         string = "12/25"
+	christmasEve         string = "12/24"
 	boxingDay            string = "12/26"
 	ortodoxChristmasDay  string = "1/7"
 	epiphanyDay          string = "1/6"
@@ -32,6 +33,13 @@ func WithOrthodoxChristmas() CalendarOption {
 func WithChristmas() CalendarOption {
 	return func(c *Calendar) {
 		c.Days[christmasDay] = Event("Christmas Day")
+	}
+}
+
+//WithChristmasEve is option implementing christmas eve
+func WithChristmasEve() CalendarOption {
+	return func(c *Calendar) {
+		c.Days[christmasEve] = Event("Christmas Eve")
 	}
 }
 
