@@ -42,12 +42,14 @@ type Calendar struct {
 	includeEasterSaturday,
 	includeEasterSunday,
 	includeEasterMonday,
+	includeEasterTuesday,
 	includeGoodFriday,
 	includeAscension,
 	includeCorpusChristi,
 	includeWhitMonday,
 	includeWhitSunday,
-	includeRadonitsa bool
+	includeRadonitsa,
+	includeCleanMonday bool
 }
 
 //CheckHoliday is intended to determine whether day is holiday
@@ -85,39 +87,52 @@ func (c *Calendar) checkOrthodoxEasterHolidays(date time.Time) (bool, *CalEvent)
 
 func (c *Calendar) checkEasterHolidays(date time.Time) (bool, *CalEvent) {
 	easterSunday := easter(date.Year(), EasterWestern)
-	easterSaturday := easterSunday.AddDate(0, 0, -1)
-	easterMonday := easterSunday.AddDate(0, 0, 1)
-	goodFriday := easterSunday.AddDate(0, 0, -2)
-	ascensionThursday := easterSunday.AddDate(0, 0, 39)
-	corpusChristi := easterSunday.AddDate(0, 0, 60)
 	if c.includeEasterSunday {
 		if easterSunday.Month() == date.Month() && easterSunday.Day() == date.Day() {
 			return true, Event("Easter Sunday")
 		}
 	}
 	if c.includeEasterSaturday {
+		easterSaturday := easterSunday.AddDate(0, 0, -1)
 		if easterSaturday.Month() == date.Month() && easterSaturday.Day() == date.Day() {
 			return true, Event("Easter Saturday")
 		}
 	}
 	if c.includeEasterMonday {
+		easterMonday := easterSunday.AddDate(0, 0, 1)
 		if easterMonday.Month() == date.Month() && easterMonday.Day() == date.Day() {
 			return true, Event("Easter Monday")
 		}
 	}
+	if c.includeEasterTuesday {
+		easterTuesday := easterSunday.AddDate(0, 0, 2)
+		if easterTuesday.Month() == date.Month() && easterTuesday.Day() == date.Day() {
+			return true, Event("Easter Tuesday")
+		}
+	}
 	if c.includeGoodFriday {
+		goodFriday := easterSunday.AddDate(0, 0, -2)
 		if goodFriday.Month() == date.Month() && goodFriday.Day() == date.Day() {
 			return true, Event("Good Friday")
 		}
 	}
 	if c.includeAscension {
+		ascensionThursday := easterSunday.AddDate(0, 0, 39)
 		if ascensionThursday.Month() == date.Month() && ascensionThursday.Day() == date.Day() {
 			return true, Event("Ascension Thursday")
 		}
 	}
+	//TODO: make sure whether it is right
 	if c.includeCorpusChristi {
+		corpusChristi := easterSunday.AddDate(0, 0, 60)
 		if corpusChristi.Month() == date.Month() && corpusChristi.Day() == date.Day() {
 			return true, Event("Corpus Christi")
+		}
+	}
+	if c.includeCleanMonday {
+		cleanMonday := easterSunday.AddDate(0, 0, 48)
+		if cleanMonday.Month() == date.Month() && cleanMonday.Day() == date.Day() {
+			return true, Event("Clean Monday")
 		}
 	}
 	return false, nil
