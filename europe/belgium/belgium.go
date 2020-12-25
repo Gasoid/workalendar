@@ -1,4 +1,4 @@
-package belarus
+package belgium
 
 import (
 	"fmt"
@@ -9,19 +9,18 @@ import (
 
 var (
 	holidays = core.Holidays{
-		"1/2":  core.Event("Day After New Year"),
-		"3/8":  core.Event("International Women's Day"),
-		"5/9":  core.Event("Victory Day"),
-		"7/3":  core.Event("Republic Day"),
-		"11/7": core.Event("October Revolution Day"),
+		"7/21":  core.Event("National Day"),
+		"11/11": core.Event("Armistice of 1918"),
 	}
 	calendar = core.NewCalendar(
 		holidays,
 		core.WithNewYearDay(),
 		core.WithLabourDay(),
-		core.WithOrthodoxChristmas(),
 		core.WithChristmas(),
-		core.WithRadonitsa(),
+		core.WithEasterMonday(),
+		core.WithWhitMonday(),
+		core.WithAscension(),
+		core.WithAllSaints(),
 	)
 )
 
