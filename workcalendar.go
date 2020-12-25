@@ -46,7 +46,8 @@ type Calendar struct {
 	includeAscension,
 	includeCorpusChristi,
 	includeWhitMonday,
-	includeWhitSunday bool
+	includeWhitSunday,
+	includeRadonitsa bool
 }
 
 //CheckHoliday is intended to determine whether day is holiday
@@ -64,6 +65,20 @@ func (c *Calendar) CheckHoliday(date time.Time) (bool, *CalEvent) {
 	}
 	if ok, event := c.checkEasterHolidays(date); ok {
 		return true, event
+	}
+	if ok, event := c.checkOrthodoxEasterHolidays(date); ok {
+		return true, event
+	}
+	return false, nil
+}
+
+func (c *Calendar) checkOrthodoxEasterHolidays(date time.Time) (bool, *CalEvent) {
+	easterSunday := easter(date.Year(), EasterOrthodox)
+	radonitsa := easterSunday.AddDate(0, 0, 9)
+	if c.includeRadonitsa {
+		if radonitsa.Month() == date.Month() && radonitsa.Day() == date.Day() {
+			return true, Event("Radonitsa")
+		}
 	}
 	return false, nil
 }
