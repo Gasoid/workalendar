@@ -5,6 +5,7 @@
 
 - Austria
 - Belarus
+- Belgium
 - Germany
 - Russia
 
