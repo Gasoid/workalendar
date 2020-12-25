@@ -1,5 +1,5 @@
 # Workcalendar
-* WORK in PROGRESS
+*WORK in PROGRESS*
 
 ### DONE:
 
@@ -7,6 +7,7 @@
 - Belarus
 - Belgium
 - Bulgaria
+- Croatia
 - Germany
 - Russia
 
