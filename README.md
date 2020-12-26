@@ -8,6 +8,8 @@
 - Belgium
 - Bulgaria
 - Croatia
+- Cyprus
+- Czech Republic
 - Germany
 - Russia
 
