@@ -170,3 +170,10 @@ func WithCleanMonday() CalendarOption {
 		c.includeCleanMonday = true
 	}
 }
+
+//WithHolyThursday is option implementing holy thursday
+func WithHolyThursday() CalendarOption {
+	return func(c *Calendar) {
+		c.includeHolyThursday = true
+	}
+}

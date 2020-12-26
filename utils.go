@@ -12,6 +12,11 @@ const (
 	EasterWestern  easterType = 3
 )
 
+//EasterSunday returns easter day
+func EasterSunday(year int) time.Time {
+	return easter(year, EasterWestern)
+}
+
 func easter(year int, method easterType) time.Time {
 	var (
 		i, j, e, c, h, p, d, m, y, g int
