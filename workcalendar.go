@@ -49,7 +49,8 @@ type Calendar struct {
 	includeWhitMonday,
 	includeWhitSunday,
 	includeRadonitsa,
-	includeCleanMonday bool
+	includeCleanMonday,
+	includeHolyThursday bool
 }
 
 //CheckHoliday is intended to determine whether day is holiday
@@ -133,6 +134,12 @@ func (c *Calendar) checkEasterHolidays(date time.Time) (bool, *CalEvent) {
 		cleanMonday := easterSunday.AddDate(0, 0, 48)
 		if cleanMonday.Month() == date.Month() && cleanMonday.Day() == date.Day() {
 			return true, Event("Clean Monday")
+		}
+	}
+	if c.includeHolyThursday {
+		holyThursday := easterSunday.AddDate(0, 0, 26)
+		if holyThursday.Month() == date.Month() && holyThursday.Day() == date.Day() {
+			return true, Event("Holy Thursday")
 		}
 	}
 	return false, nil
