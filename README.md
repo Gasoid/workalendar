@@ -19,6 +19,7 @@
 - Hungary
 - Iceland
 - Ireland
+- Italy
 - Russia
 
 ## Overview
