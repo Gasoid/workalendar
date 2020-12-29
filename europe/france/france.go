@@ -1,4 +1,4 @@
-package finland
+package france
 
 import (
 	"fmt"
@@ -7,23 +7,21 @@ import (
 	core "github.com/Gasoid/workalendar"
 )
 
-//TODO: add variable holidays: Midsummer's Eve and the rest
+//TODO: check christmas
 var (
 	holidays = core.Holidays{
-		"12/6": core.Event("Independence Day"),
+		"5/8":   core.Event("Victory in Europe Day"),
+		"7/14":  core.Event("Bastille Day"),
+		"11/11": core.Event("Armistice Day"),
 	}
 	calendar = core.NewCalendar(
 		holidays,
-		core.WithEpiphany(),
-		core.WithGoodFriday(),
 		core.WithNewYearDay(),
-		core.WithChristmas(),
-		core.WithEasterSunday(),
 		core.WithEasterMonday(),
 		core.WithAscension(),
-		core.WithWhitSunday(),
-		core.WithChristmasEve(),
-		core.WithBoxingDay(),
+		core.WithWhitMonday(),
+		core.WithAllSaints(),
+		core.WithAssumption(),
 		core.WithLabourDay(),
 	)
 )
