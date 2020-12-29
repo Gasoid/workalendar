@@ -2,7 +2,7 @@
 **WORK in PROGRESS**
 
 ### DONE:
-
+- **Europe:**
 - Austria
 - Belarus
 - Belgium
@@ -10,7 +10,14 @@
 - Croatia
 - Cyprus
 - Czech Republic
+- Denmark
+- Estonia
+- Finland
+- France
 - Germany
+- Greece
+- Hungary
+- Iceland
 - Russia
 
 ## Overview
