@@ -20,6 +20,7 @@
 - Iceland
 - Ireland
 - Italy
+- Latvia
 - Russia
 
 ## Overview
