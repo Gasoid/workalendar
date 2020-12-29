@@ -28,6 +28,9 @@ func NewCalendar(holidays Holidays, opts ...CalendarOption) *Calendar {
 	for _, opt := range opts {
 		opt(c)
 	}
+	if c.easterMethod == 0 {
+		c.easterMethod = EasterWestern
+	}
 	return c
 }
 
@@ -87,7 +90,7 @@ func (c *Calendar) checkOrthodoxEasterHolidays(date time.Time) (bool, *CalEvent)
 }
 
 func (c *Calendar) checkEasterHolidays(date time.Time) (bool, *CalEvent) {
-	easterSunday := easter(date.Year(), EasterWestern)
+	easterSunday := easter(date.Year(), c.easterMethod)
 	if c.includeEasterSunday {
 		if easterSunday.Month() == date.Month() && easterSunday.Day() == date.Day() {
 			return true, Event("Easter Sunday")
@@ -146,7 +149,7 @@ func (c *Calendar) checkEasterHolidays(date time.Time) (bool, *CalEvent) {
 }
 
 func (c *Calendar) checkWhitHolidays(date time.Time) (bool, *CalEvent) {
-	easterSunday := easter(date.Year(), EasterWestern)
+	easterSunday := easter(date.Year(), c.easterMethod)
 	whitMonday := easterSunday.AddDate(0, 0, 50)
 	whitSunday := easterSunday.AddDate(0, 0, 49)
 	if c.includeWhitMonday {
