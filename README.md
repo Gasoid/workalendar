@@ -23,6 +23,7 @@
 - Latvia
 - Lithuania
 - Luxembourg
+- Malta
 - Russia
 
 ## Overview

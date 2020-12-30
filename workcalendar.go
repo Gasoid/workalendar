@@ -37,6 +37,15 @@ func NewCalendar(holidays Holidays, opts ...CalendarOption) *Calendar {
 //Holidays is a map to represent events
 type Holidays map[string]*CalEvent
 
+//dayOption is inteded to be passed to Add func
+// type dayOption func(*Calendar)
+
+// //Add is inteded to make a date
+// func (h *Holidays) Add(opts ...dayOption) error {
+
+// 	return nil
+// }
+
 //Calendar is a struct that is intended for representing all holidays of country
 type Calendar struct {
 	Days               Holidays
