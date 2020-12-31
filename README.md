@@ -33,6 +33,7 @@
 - Russia
 - Serbia
 - Slovakia
+- Slovenia
 
 ## Overview
 
