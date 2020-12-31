@@ -32,6 +32,7 @@
 - Romania
 - Russia
 - Serbia
+- Slovakia
 
 ## Overview
 
