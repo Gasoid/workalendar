@@ -26,6 +26,7 @@
 - Malta
 - Monaco
 - Netherlands
+- Norway
 - Russia
 
 ## Overview
