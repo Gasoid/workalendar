@@ -28,6 +28,7 @@
 - Netherlands
 - Norway
 - Poland
+- Portugal
 - Russia
 
 ## Overview
