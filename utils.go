@@ -6,6 +6,7 @@ import (
 
 type easterType int8
 
+//Easter methods
 const (
 	EasterJulian   easterType = 1
 	EasterOrthodox easterType = 2
