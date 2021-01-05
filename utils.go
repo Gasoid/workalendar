@@ -6,11 +6,23 @@ import (
 
 type easterType int8
 
+//Easter methods
 const (
 	EasterJulian   easterType = 1
 	EasterOrthodox easterType = 2
 	EasterWestern  easterType = 3
 )
+
+//FindWorkingDay returns 1st working day (monday)
+func FindWorkingDay(date time.Time) time.Time {
+	if date.Weekday() == time.Saturday {
+		return date.AddDate(0, 0, 2)
+	}
+	if date.Weekday() == time.Sunday {
+		return date.AddDate(0, 0, 1)
+	}
+	return date
+}
 
 //EasterSunday returns easter day
 func EasterSunday(year int) time.Time {

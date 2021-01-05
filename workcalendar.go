@@ -157,22 +157,22 @@ func (c *Calendar) checkEasterHolidays(date time.Time) (bool, *CalEvent) {
 	return false, nil
 }
 
-func (c *Calendar) checkWhitHolidays(date time.Time) (bool, *CalEvent) {
-	easterSunday := easter(date.Year(), c.easterMethod)
-	whitMonday := easterSunday.AddDate(0, 0, 50)
-	whitSunday := easterSunday.AddDate(0, 0, 49)
-	if c.includeWhitMonday {
-		if whitMonday.Month() == date.Month() && whitMonday.Day() == date.Day() {
-			return true, Event("Whit Monday")
-		}
-	}
-	if c.includeWhitSunday {
-		if whitSunday.Month() == date.Month() && whitSunday.Day() == date.Day() {
-			return true, Event("Whit Sunday")
-		}
-	}
-	return false, nil
-}
+// func (c *Calendar) checkWhitHolidays(date time.Time) (bool, *CalEvent) {
+// 	easterSunday := easter(date.Year(), c.easterMethod)
+// 	whitMonday := easterSunday.AddDate(0, 0, 50)
+// 	whitSunday := easterSunday.AddDate(0, 0, 49)
+// 	if c.includeWhitMonday {
+// 		if whitMonday.Month() == date.Month() && whitMonday.Day() == date.Day() {
+// 			return true, Event("Whit Monday")
+// 		}
+// 	}
+// 	if c.includeWhitSunday {
+// 		if whitSunday.Month() == date.Month() && whitSunday.Day() == date.Day() {
+// 			return true, Event("Whit Sunday")
+// 		}
+// 	}
+// 	return false, nil
+// }
 
 // func (c *Calendar) checkChristianHolidays(date time.Time) (bool, *CalEvent) {
 // 	return false, nil
