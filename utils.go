@@ -13,6 +13,24 @@ const (
 	EasterWestern  easterType = 3
 )
 
+//FindLastMonday returns the last monday of month
+func FindLastMonday(date time.Time) time.Time {
+	if date.Weekday() == time.Monday {
+		return date
+	}
+	lastDay := time.Date(date.Year(), date.Month()+1, 0, 10, 0, 0, 0, time.UTC)
+	day := (8-int(lastDay.Weekday()))%7 - 7
+	date = date.AddDate(0, 0, day)
+	return date
+}
+
+//FindFirstMonday returns the next monday
+func FindFirstMonday(date time.Time) time.Time {
+	day := (8 - int(date.Weekday())) % 7
+	date = date.AddDate(0, 0, day)
+	return date
+}
+
 //FindWorkingDay returns 1st working day (monday)
 func FindWorkingDay(date time.Time) time.Time {
 	if date.Weekday() == time.Saturday {
