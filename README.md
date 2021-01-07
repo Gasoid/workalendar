@@ -1,6 +1,4 @@
-# Workcalendar
-**WORK in PROGRESS**
-
+# Workcalendar [WIP]
 ### DONE:
 - **Europe:**
 - Austria
@@ -37,21 +35,22 @@
 - Spain
 - Sweden
 - Ukraine
+- United Kingdom
 
 ## Overview
 
 Workcalendar is a go library that is supposed to handle holidays.
 
 
-## Usage
-
+## Examples
+### example 1
 ```go
 package main
 
 import (
     "fmt"
 	"time"
-
+    //import a country
 	"github.com/Gasoid/workalendar/europe/russia"
 )
 
@@ -75,4 +74,36 @@ func main() {
     }
 }
 
+```
+
+### example 2
+```go
+package main
+
+import (
+    "fmt"
+	"time"
+    //import a region
+	"github.com/Gasoid/workalendar/europe/spain/catalonia"
+)
+
+func main() {
+    now := time.Now()
+    // check whether a day is holiday
+    if catalonia.IsHoliday(now) {
+        h, _ := catalonia.GetHoliday(now)
+        fmt.Printf("Holiday is %s", h)
+    } else {
+        fmt.Print("No holiday today")
+    }
+
+    // get the holiday name
+    march8 := time.Date(2020, time.March, 8, 0, 0, 0, 0, time.UTC)
+    h, err := catalonia.GetHoliday(march8)
+    if err != nil {
+        fmt.Print("Hm, it is weird")
+    } else {
+        fmt.Printf("Holiday is %s", h)
+    }
+}
 ```
