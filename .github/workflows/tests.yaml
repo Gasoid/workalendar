@@ -1,0 +1,32 @@
+name: UnitTests
+
+on:
+  push:
+    paths:
+      - '*.go'
+      - '**/*.go'
+    branches-ignore:
+    - master
+# pull_request
+jobs:
+
+  testing:
+    name: UnitTests
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Set up Go 1.x
+      uses: actions/setup-go@v2
+      with:
+        go-version: ^1.14
+      id: go
+
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v2
+
+    - name: Get dependencies
+      run: go mod download
+
+    - name: UnitTests
+      run: go test -v ./... -coverprofile=coverage.txt -covermode=atomic

@@ -62,7 +62,7 @@ func getOriginalHoliday(date time.Time) *core.CalEvent {
 
 //IsWorkingDay is inteded to check whether a day is working or not
 func IsWorkingDay(date time.Time) bool {
-	return calendar.IsWorkingDay(date) || !isShiftHoliday(date)
+	return calendar.IsWorkingDay(date) && !isShiftHoliday(date)
 }
 
 //IsHoliday is inteded to check whether a day is holiday or not

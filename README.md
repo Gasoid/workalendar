@@ -1,4 +1,7 @@
-# Workcalendar [WIP]
+# Workcalendar
+This is currently a work-in-progress.
+I've used the repo: https://github.com/peopledoc/workalendar as source of holidays.
+
 ### DONE:
 - **Europe:**
 - Austria
