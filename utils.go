@@ -16,8 +16,8 @@ const (
 //FindLastMonday returns the last monday of month
 func FindLastMonday(date time.Time) time.Time {
 	lastDay := time.Date(date.Year(), date.Month()+1, 0, 10, 0, 0, 0, time.UTC)
-	day := (8-int(lastDay.Weekday()))%7 - 7
-	date = date.AddDate(0, 0, day)
+	numDays := []int{-6, 0, -1, -2, -3, -4, -5}
+	date = date.AddDate(0, 0, numDays[int(lastDay.Weekday())])
 	return date
 }
 
