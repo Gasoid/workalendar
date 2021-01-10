@@ -46,5 +46,8 @@ func TestFirstMonday(t *testing.T) {
 func TestLastMonday(t *testing.T) {
 	jan4 := time.Date(2021, time.January, 4, 0, 0, 0, 0, time.UTC)
 	jan25 := time.Date(2021, time.January, 25, 0, 0, 0, 0, time.UTC)
+	dec28 := time.Date(2020, time.December, 28, 0, 0, 0, 0, time.UTC)
+	dec31 := time.Date(2020, time.December, 31, 0, 0, 0, 0, time.UTC)
 	assert.Equal(t, jan25.Format("2006/1/2"), FindLastMonday(jan4).Format("2006/1/2"))
+	assert.Equal(t, dec28.Format("2006/1/2"), FindLastMonday(dec31).Format("2006/1/2"))
 }
