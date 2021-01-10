@@ -1,6 +1,7 @@
 package russia_test
 
 import (
+	"fmt"
 	"testing"
 	"time"
 
@@ -32,6 +33,7 @@ func TestGetHoliday_NotHoliday(t *testing.T) {
 }
 
 func TestIsWorkingDay(t *testing.T) {
+	fmt.Println("march8:", russia.IsWorkingDay(march8))
 	assert.False(t, russia.IsWorkingDay(march8))
 	assert.False(t, russia.IsWorkingDay(may9))
 }
