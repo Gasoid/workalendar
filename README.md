@@ -2,48 +2,9 @@
 This is currently a work-in-progress.
 I've used the repo: https://github.com/peopledoc/workalendar as source of holidays.
 
-### DONE:
-- **Europe:**
-- Austria
-- Belarus
-- Belgium
-- Bulgaria
-- Croatia
-- Cyprus
-- Czech Republic
-- Denmark
-- Estonia
-- Finland
-- France
-- Germany
-- Greece
-- Hungary
-- Iceland
-- Ireland
-- Italy
-- Latvia
-- Lithuania
-- Luxembourg
-- Malta
-- Monaco
-- Netherlands
-- Norway
-- Poland
-- Portugal
-- Romania
-- Russia
-- Serbia
-- Slovakia
-- Slovenia
-- Spain
-- Sweden
-- Ukraine
-- United Kingdom
-
 ## Overview
 
-Workcalendar is a go library that is supposed to handle holidays.
-
+Workcalendar is a go library that is inteded to handle holidays.
 
 ## Examples
 ### example 1
@@ -110,3 +71,41 @@ func main() {
     }
 }
 ```
+
+### DONE:
+- **Europe:**
+- Austria
+- Belarus
+- Belgium
+- Bulgaria
+- Croatia
+- Cyprus
+- Czech Republic
+- Denmark
+- Estonia
+- Finland
+- France
+- Germany
+- Greece
+- Hungary
+- Iceland
+- Ireland
+- Italy
+- Latvia
+- Lithuania
+- Luxembourg
+- Malta
+- Monaco
+- Netherlands
+- Norway
+- Poland
+- Portugal
+- Romania
+- Russia
+- Serbia
+- Slovakia
+- Slovenia
+- Spain
+- Sweden
+- Ukraine
+- United Kingdom
