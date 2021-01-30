@@ -74,15 +74,17 @@ func (c *Calendar) CheckHoliday(date time.Time) (bool, *CalEvent) {
 	if event, ok := c.Days[fmt.Sprintf("%d/%d/%d", year, month, day)]; ok {
 		return true, event
 	}
-	days := c.additionalHolidays(date)
-	if event, ok := days[fmt.Sprintf("%d/%d/%d", year, month, day)]; ok {
-		return true, event
-	}
 	if ok, event := c.checkEasterHolidays(date); ok {
 		return true, event
 	}
 	if ok, event := c.checkOrthodoxEasterHolidays(date); ok {
 		return true, event
+	}
+	if c.additionalHolidays != nil {
+		days := c.additionalHolidays(date)
+		if event, ok := days[fmt.Sprintf("%d/%d/%d", year, month, day)]; ok {
+			return true, event
+		}
 	}
 	return false, nil
 }
