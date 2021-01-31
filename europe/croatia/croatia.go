@@ -65,5 +65,5 @@ func GetHoliday(date time.Time) (*core.CalEvent, error) {
 	if holiday == nil {
 		return nil, fmt.Errorf("There is no holiday for %s", date)
 	}
-	return calendar.GetHoliday(date), nil
+	return holiday, nil
 }

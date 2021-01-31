@@ -1,4 +1,4 @@
-package croatia
+package cyprus
 
 import (
 	"fmt"
