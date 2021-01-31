@@ -9,8 +9,8 @@ import (
 )
 
 var (
-	holiday1   = time.Date(2020, time.March, 3, 0, 0, 0, 0, time.UTC)
-	holiday2   = time.Date(2020, time.May, 6, 0, 0, 0, 0, time.UTC)
+	holiday1   = time.Date(2020, time.July, 3, 0, 0, 0, 0, time.UTC)
+	holiday2   = time.Date(2020, time.May, 9, 0, 0, 0, 0, time.UTC)
 	notHoliday = time.Date(2020, time.May, 17, 0, 0, 0, 0, time.UTC)
 )
 
@@ -21,7 +21,7 @@ func TestIsHoliday(t *testing.T) {
 
 func TestGetHoliday(t *testing.T) {
 	holiday, err := country.GetHoliday(holiday1)
-	v := "Liberation Day"
+	v := "Republic Day"
 	assert.NoError(t, err)
 	assert.Equal(t, v, holiday.Name)
 }
