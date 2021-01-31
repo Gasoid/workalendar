@@ -21,7 +21,7 @@ func TestIsHoliday(t *testing.T) {
 
 func TestGetHoliday(t *testing.T) {
 	holiday, err := country.GetHoliday(holiday1)
-	v := "Liberation Day"
+	v := "Day of Uprising Against Occupation"
 	assert.NoError(t, err)
 	assert.Equal(t, v, holiday.Name)
 }
