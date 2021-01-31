@@ -107,5 +107,6 @@ func main() {
 - Slovenia
 - Spain
 - Sweden
+- Switzerland
 - Ukraine
 - United Kingdom
