@@ -11,7 +11,7 @@ import (
 var (
 	holiday1   = time.Date(2020, time.May, 17, 0, 0, 0, 0, time.UTC)
 	holiday2   = time.Date(2020, time.December, 26, 0, 0, 0, 0, time.UTC)
-	notHoliday = time.Date(2020, time.May, 17, 0, 0, 0, 0, time.UTC)
+	notHoliday = time.Date(2020, time.May, 19, 0, 0, 0, 0, time.UTC)
 )
 
 func TestIsHoliday(t *testing.T) {
