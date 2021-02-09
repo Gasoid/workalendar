@@ -1,13 +1,16 @@
-# Workcalendar
+# Overview
 This is currently a work-in-progress.
 I've used the repo: https://github.com/peopledoc/workalendar as source of holidays.
 
-## Overview
-
 Workcalendar is a go library that is inteded to handle holidays.
 
-## Examples
-### example 1
+# Status
+This library is currently being developed.
+
+If you spot any bug or wish to add a calendar, please fill Pull Request.
+
+## Usage Examples
+### Example 1
 ```go
 package main
 
@@ -40,7 +43,7 @@ func main() {
 
 ```
 
-### example 2
+### Example 2
 ```go
 package main
 
@@ -71,9 +74,8 @@ func main() {
     }
 }
 ```
-
-### DONE:
-- **Europe:**
+## Available Calendars
+### Europe:
 - Austria
 - Belarus
 - Belgium
@@ -110,3 +112,7 @@ func main() {
 - Switzerland
 - Ukraine
 - United Kingdom
+
+
+## License
+This library is published under the terms of the MIT License. Please check the LICENSE file for more details.
