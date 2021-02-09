@@ -7,7 +7,7 @@ Workcalendar is a go library that is inteded to handle holidays.
 # Status
 This library is currently being developed.
 
-If you spot any bug or wish to add a calendar, please fill Pull Request.
+If you spot any bug or wish to add a calendar, please create a Pull Request.
 
 ## Usage Examples
 ### Example 1
