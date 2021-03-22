@@ -62,6 +62,7 @@ type Calendar struct {
 	includeWhitSunday,
 	includeRadonitsa,
 	includeCleanMonday,
+	includeFatTuesday,
 	includeHolyThursday bool
 }
 
@@ -103,57 +104,63 @@ func (c *Calendar) checkOrthodoxEasterHolidays(date time.Time) (bool, *CalEvent)
 func (c *Calendar) checkEasterHolidays(date time.Time) (bool, *CalEvent) {
 	easterSunday := easter(date.Year(), c.easterMethod)
 	if c.includeEasterSunday {
-		if easterSunday.Month() == date.Month() && easterSunday.Day() == date.Day() {
+		if c.equals(easterSunday, date) {
 			return true, Event("Easter Sunday")
 		}
 	}
 	if c.includeEasterSaturday {
 		easterSaturday := easterSunday.AddDate(0, 0, -1)
-		if easterSaturday.Month() == date.Month() && easterSaturday.Day() == date.Day() {
+		if c.equals(easterSaturday, date) {
 			return true, Event("Easter Saturday")
 		}
 	}
 	if c.includeEasterMonday {
 		easterMonday := easterSunday.AddDate(0, 0, 1)
-		if easterMonday.Month() == date.Month() && easterMonday.Day() == date.Day() {
+		if c.equals(easterMonday, date) {
 			return true, Event("Easter Monday")
 		}
 	}
 	if c.includeEasterTuesday {
 		easterTuesday := easterSunday.AddDate(0, 0, 2)
-		if easterTuesday.Month() == date.Month() && easterTuesday.Day() == date.Day() {
+		if c.equals(easterTuesday, date) {
 			return true, Event("Easter Tuesday")
 		}
 	}
 	if c.includeGoodFriday {
 		goodFriday := easterSunday.AddDate(0, 0, -2)
-		if goodFriday.Month() == date.Month() && goodFriday.Day() == date.Day() {
+		if c.equals(goodFriday, date) {
 			return true, Event("Good Friday")
 		}
 	}
 	if c.includeAscension {
 		ascensionThursday := easterSunday.AddDate(0, 0, 39)
-		if ascensionThursday.Month() == date.Month() && ascensionThursday.Day() == date.Day() {
+		if c.equals(ascensionThursday, date) {
 			return true, Event("Ascension Thursday")
 		}
 	}
 	//TODO: make sure whether it is right
 	if c.includeCorpusChristi {
 		corpusChristi := easterSunday.AddDate(0, 0, 60)
-		if corpusChristi.Month() == date.Month() && corpusChristi.Day() == date.Day() {
+		if c.equals(corpusChristi, date) {
 			return true, Event("Corpus Christi")
 		}
 	}
 	if c.includeCleanMonday {
 		cleanMonday := easterSunday.AddDate(0, 0, 48)
-		if cleanMonday.Month() == date.Month() && cleanMonday.Day() == date.Day() {
+		if c.equals(cleanMonday, date) {
 			return true, Event("Clean Monday")
 		}
 	}
 	if c.includeHolyThursday {
 		holyThursday := easterSunday.AddDate(0, 0, 26)
-		if holyThursday.Month() == date.Month() && holyThursday.Day() == date.Day() {
+		if c.equals(holyThursday, date) {
 			return true, Event("Holy Thursday")
+		}
+	}
+	if c.includeFatTuesday {
+		fatTuesday := easterSunday.AddDate(0, 0, -47)
+		if c.equals(fatTuesday, date) {
+			return true, Event("Fat Tuesday")
 		}
 	}
 	return false, nil
@@ -202,4 +209,8 @@ func (c *Calendar) GetHoliday(date time.Time) *CalEvent {
 		return event
 	}
 	return nil
+}
+
+func (c *Calendar) equals(date1 time.Time, date2 time.Time) bool {
+	return date1.Month() == date2.Month() && date1.Day() == date2.Day()
 }
