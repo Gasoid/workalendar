@@ -1,0 +1,21 @@
+country: argentina
+holidays:
+  - day: "10/26"
+    name: "National Holiday"
+  - name: "Día Nacional de la Memoria por la Verdad y la Justicia"
+    day: "3/24"
+  - name: "Día de la Revolución de Mayo"
+    day: "5/25"
+  - day: "6/20"
+    name: "Día Paso a la Inmortalidad del General Manuel Belgrano"
+  - day: "7/9"
+    name: "Día de la Independencia"
+include:
+  - "NewYearDay"
+  - "LabourDay"
+  - "FatTuesday"
+  - "GoodFriday"
+  - "EasterSaturday"
+  - "EasterSunday"
+  - "Christmas"
+  - "ImmaculateConception"

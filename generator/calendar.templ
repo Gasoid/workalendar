@@ -1,0 +1,20 @@
+// Code generated github.com/Gasoid/workalendar/generator/gen.go DO NOT EDIT.
+package {{.Country}}
+
+import (
+	core "github.com/Gasoid/workalendar"
+)
+
+var (
+	holidays = core.Holidays{
+    {{- range .Holidays}}
+       "{{.Day}}": core.Event("{{.Name}}"),
+    {{- end}}
+	}
+	calendar = core.NewCalendar(
+		holidays,
+        {{- range .Include }}
+		core.With{{.}}(),
+        {{- end}}
+	)
+)
