@@ -1,0 +1,17 @@
+country: barbados
+holidays:
+  - name: "Errol Barrow Day"
+    day: "1/21"
+  - name: "National Heroes Day"
+    day: "4/28"
+  - name: "Independance Day"
+    day: "11/30"
+  - name: "Boxing Day"
+    day: "12/26"
+include:
+  - "NewYearDay"
+  - "LabourDay"
+  - "GoodFriday"
+  - "EasterMonday"
+  - "EasterSunday"
+  - "WhitMonday"
