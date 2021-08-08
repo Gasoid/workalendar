@@ -1,7 +1,5 @@
 country: argentina
 holidays:
-  - day: "10/26"
-    name: "National Holiday"
   - name: "Día Nacional de la Memoria por la Verdad y la Justicia"
     day: "3/24"
   - name: "Día de la Revolución de Mayo"

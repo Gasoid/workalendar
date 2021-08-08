@@ -1,3 +1,4 @@
+// Code generated github.com/Gasoid/workalendar/generator/gen.go DO NOT EDIT.
 package argentina
 
 import (
@@ -7,7 +8,25 @@ import (
 	core "github.com/Gasoid/workalendar"
 )
 
-//go:generate go run ../../generator/gen.go  -templ ../../generator/calendar.templ
+var (
+	holidays = core.Holidays{
+       "3/24": core.Event("Día Nacional de la Memoria por la Verdad y la Justicia"),
+       "5/25": core.Event("Día de la Revolución de Mayo"),
+       "6/20": core.Event("Día Paso a la Inmortalidad del General Manuel Belgrano"),
+       "7/9": core.Event("Día de la Independencia"),
+	}
+	calendar = core.NewCalendar(
+		holidays,
+		core.WithNewYearDay(),
+		core.WithLabourDay(),
+		core.WithFatTuesday(),
+		core.WithGoodFriday(),
+		core.WithEasterSaturday(),
+		core.WithEasterSunday(),
+		core.WithChristmas(),
+		core.WithImmaculateConception(),
+	)
+)
 
 //IsWorkingDay is inteded to check whether a day is working or not
 func IsWorkingDay(date time.Time) bool {

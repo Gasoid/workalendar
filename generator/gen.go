@@ -31,7 +31,7 @@ func main() {
 	var outPath string
 	flag.StringVar(&holidaysPath, "holidays", "holidays.yaml", "a path to holidays.yaml")
 	flag.StringVar(&templPath, "templ", "calendar.templ", "a path to calendar.templ")
-	flag.StringVar(&outPath, "out", "holidays.go", "a path to holidays.go")
+	flag.StringVar(&outPath, "out", "", "a path to holidays.go")
 	flag.Parse()
 	holidaysYaml := Holidays{}
 	holidaysYaml.load(holidaysPath)
@@ -49,13 +49,21 @@ func (h *Holidays) load(filePath string) {
 	}
 }
 
+func (h *Holidays) getOutPath(outPath string) string {
+	if outPath == "" {
+		return h.Country + ".go"
+
+	}
+	return outPath
+}
+
 func (h *Holidays) generateVarBlock(templPath string, outPath string) {
 	t, err := template.ParseFiles(templPath)
 	if err != nil {
 		log.Fatal(err)
 	}
 	templFile := filepath.Base(templPath)
-	f, err := os.Create(outPath)
+	f, err := os.Create(h.getOutPath(outPath))
 	if err != nil {
 		log.Fatal(err)
 	}
