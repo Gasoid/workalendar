@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	holiday1   = time.Date(2020, time.October, 26, 0, 0, 0, 0, time.UTC)
+	holiday1   = time.Date(2020, time.May, 25, 0, 0, 0, 0, time.UTC)
 	holiday2   = time.Date(2020, time.May, 1, 0, 0, 0, 0, time.UTC)
 	notHoliday = time.Date(2020, time.May, 17, 0, 0, 0, 0, time.UTC)
 )
