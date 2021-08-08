@@ -176,6 +176,13 @@ func WithHolyThursday() CalendarOption {
 	}
 }
 
+//WithFatTuesday is option implementing fat tuesday
+func WithFatTuesday() CalendarOption {
+	return func(c *Calendar) {
+		c.includeFatTuesday = true
+	}
+}
+
 //EnableOrthodox is option implementing orthodox method to calculate easter sunday
 func EnableOrthodox() CalendarOption {
 	return func(c *Calendar) {
