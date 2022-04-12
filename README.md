@@ -29,7 +29,7 @@ func main() {
         h, _ := germany.GetHoliday(now)
         fmt.Printf("Holiday is %s", h)
     } else {
-        h, _ := germany.NextHoliday(now)
+        h := germany.NextHoliday(now)
         fmt.Print("No holiday today")
         fmt.Printf("Next holiday is %s", h)
     }
