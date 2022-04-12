@@ -67,3 +67,8 @@ func GetHoliday(date time.Time) (*core.CalEvent, error) {
 	}
 	return holiday, nil
 }
+
+//NextHoliday returns next holiday from provided date
+func NextHoliday(date time.Time) *core.CalEvent {
+	return calendar.NextHoliday(date)
+}
