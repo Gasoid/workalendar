@@ -26,11 +26,11 @@ jobs:
       # run: go mod download
       run: |
         go get -u golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow
-        go get golang.org/x/lint/golint
+        go get -u golang.org/x/lint/golint
         go get honnef.co/go/tools/cmd/staticcheck
 
     - name: Linters
       run: |
         go vet -vettool=$(which shadow)
-        golint
+        ${HOME}/go/bin/golint
         staticcheck
