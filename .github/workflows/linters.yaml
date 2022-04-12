@@ -31,6 +31,7 @@ jobs:
 
     - name: Linters
       run: |
+        ls -la ${HOME}/go/bin/
         go vet -vettool=$(which shadow)
         ${HOME}/go/bin/golint
         staticcheck
