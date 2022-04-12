@@ -8,6 +8,7 @@ import (
 //CalEvent describes holiday
 type CalEvent struct {
 	Name string
+	Day  time.Time
 }
 
 func (e *CalEvent) String() string {
@@ -37,15 +38,6 @@ func NewCalendar(holidays Holidays, opts ...CalendarOption) *Calendar {
 //Holidays is a map to represent events
 type Holidays map[string]*CalEvent
 
-//dayOption is inteded to be passed to Add func
-// type dayOption func(*Calendar)
-
-// //Add is inteded to make a date
-// func (h *Holidays) Add(opts ...dayOption) error {
-
-// 	return nil
-// }
-
 //Calendar is a struct that is intended for representing all holidays of country
 type Calendar struct {
 	Days               Holidays
@@ -70,20 +62,25 @@ type Calendar struct {
 func (c *Calendar) CheckHoliday(date time.Time) (bool, *CalEvent) {
 	year, month, day := date.Date()
 	if event, ok := c.Days[fmt.Sprintf("%d/%d", month, day)]; ok {
+		event.Day = date
 		return true, event
 	}
 	if event, ok := c.Days[fmt.Sprintf("%d/%d/%d", year, month, day)]; ok {
+		event.Day = date
 		return true, event
 	}
 	if ok, event := c.checkEasterHolidays(date); ok {
+		event.Day = date
 		return true, event
 	}
 	if ok, event := c.checkOrthodoxEasterHolidays(date); ok {
+		event.Day = date
 		return true, event
 	}
 	if c.additionalHolidays != nil {
 		days := c.additionalHolidays(date)
 		if event, ok := days[fmt.Sprintf("%d/%d/%d", year, month, day)]; ok {
+			event.Day = date
 			return true, event
 		}
 	}
@@ -213,4 +210,48 @@ func (c *Calendar) GetHoliday(date time.Time) *CalEvent {
 
 func (c *Calendar) equals(date1 time.Time, date2 time.Time) bool {
 	return date1.Month() == date2.Month() && date1.Day() == date2.Day()
+}
+
+//NextHoliday returns next holiday from provided date
+func (c *Calendar) NextHoliday(date time.Time) *CalEvent {
+	usualLenKey := 5
+	day := ""
+	distance := 0.0
+
+	for k := range c.Days {
+		var (
+			curDate time.Time
+			err     error
+		)
+		if len(k) > usualLenKey {
+			curDate, err = time.Parse("2006/01/02", k)
+			if err != nil {
+				continue
+			}
+
+		} else {
+			curDate, err = time.Parse("2006/01/02", fmt.Sprintf("%d/%s", date.Year(), k))
+			if err != nil {
+				continue
+			}
+			duration := curDate.Sub(date)
+			if duration.Hours() < 0 {
+				curDate, err = time.Parse("2006/01/02", fmt.Sprintf("%d/%s", date.Year()+1, k))
+				if err != nil {
+					continue
+				}
+			}
+		}
+		duration := curDate.Sub(date)
+		if distance == 0.0 && day == "" {
+			distance = duration.Hours() / 24
+			day = k
+			continue
+		}
+		if duration.Hours()/24 < distance {
+			day = k
+			distance = duration.Hours() / 24
+		}
+	}
+	return c.Days[day]
 }

@@ -1,3 +1,4 @@
+[![Go Reference](https://pkg.go.dev/badge/github.com/Gasoid/workalendar.svg)](https://pkg.go.dev/github.com/Gasoid/workalendar)
 # Overview
 This is currently a work-in-progress.
 I've used the repo: https://github.com/peopledoc/workalendar as source of holidays.
@@ -18,22 +19,24 @@ import (
     "fmt"
 	"time"
     //import a country
-	"github.com/Gasoid/workalendar/europe/russia"
+	"github.com/Gasoid/workalendar/europe/germany"
 )
 
 func main() {
     now := time.Now()
     // check whether a day is holiday
-    if russia.IsHoliday(now) {
-        h, _ := russia.GetHoliday(now)
+    if germany.IsHoliday(now) {
+        h, _ := germany.GetHoliday(now)
         fmt.Printf("Holiday is %s", h)
     } else {
+        h, _ := germany.NextHoliday(now)
         fmt.Print("No holiday today")
+        fmt.Printf("Next holiday is %s", h)
     }
 
     // get holiday name
-    march8 := time.Date(2020, time.March, 8, 0, 0, 0, 0, time.UTC)
-    h, err := russia.GetHoliday(march8)
+    may1 := time.Date(2021, time.May, 1, 0, 0, 0, 0, time.UTC)
+    h, err := germany.GetHoliday(march8)
     if err != nil {
         fmt.Print("Hm, it is weird")
     } else {

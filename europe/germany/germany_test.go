@@ -9,9 +9,11 @@ import (
 )
 
 var (
-	holiday1   = time.Date(2020, time.October, 3, 0, 0, 0, 0, time.UTC)
-	holiday2   = time.Date(2020, time.May, 1, 0, 0, 0, 0, time.UTC)
-	notHoliday = time.Date(2020, time.May, 17, 0, 0, 0, 0, time.UTC)
+	holiday1    = time.Date(2020, time.October, 3, 0, 0, 0, 0, time.UTC)
+	holiday2    = time.Date(2020, time.May, 1, 0, 0, 0, 0, time.UTC)
+	notHoliday  = time.Date(2020, time.May, 17, 0, 0, 0, 0, time.UTC)
+	nextHoliday = time.Date(2020, time.December, 31, 0, 0, 0, 0, time.UTC)
+	newYear     = time.Date(2021, time.January, 1, 0, 0, 0, 0, time.UTC)
 )
 
 func TestIsHoliday(t *testing.T) {
@@ -34,4 +36,9 @@ func TestGetHoliday_NotHoliday(t *testing.T) {
 func TestIsWorkingDay(t *testing.T) {
 	assert.False(t, country.IsWorkingDay(holiday1))
 	assert.False(t, country.IsWorkingDay(holiday2))
+}
+
+func TestNextHoliday(t *testing.T) {
+	assert.Equal(t, country.NextHoliday(nextHoliday).Day.Day(), newYear.Day())
+	assert.Equal(t, country.NextHoliday(nextHoliday).Day.Month(), newYear.Month())
 }
