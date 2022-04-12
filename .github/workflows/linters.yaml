@@ -29,9 +29,8 @@ jobs:
         go get -u golang.org/x/lint/golint
         go get honnef.co/go/tools/cmd/staticcheck
 
-    - name: Linters
-      run: |
-        ls -la ${HOME}/go/bin/
-        go vet -vettool=$(which shadow)
-        ${HOME}/go/bin/golint
-        staticcheck
+    # - name: Linters
+    #   run: |
+    #     go vet -vettool=$(which shadow)
+    #     golint
+    #     staticcheck
