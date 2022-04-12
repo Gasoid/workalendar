@@ -36,7 +36,7 @@ func main() {
 
     // get holiday name
     may1 := time.Date(2021, time.May, 1, 0, 0, 0, 0, time.UTC)
-    h, err := germany.GetHoliday(march8)
+    h, err := germany.GetHoliday(may1)
     if err != nil {
         fmt.Print("Hm, it is weird")
     } else {
